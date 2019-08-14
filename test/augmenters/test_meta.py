@@ -1490,12 +1490,8 @@ def test_Augmenter():
     # --------
     # TODO incomplete tests, handle only cases that were missing in code coverage report
     heatmaps = ia.HeatmapsOnImage(np.zeros((3, 3, 1), dtype=np.float32), shape=(3, 3, 3))
-    got_exception = False
-    try:
-        _ = aug.augment_heatmaps([heatmaps])
-    except NotImplementedError:
-        got_exception = True
-    assert got_exception
+    result = aug.augment_heatmaps([heatmaps])[0]
+    assert np.allclose(result.arr_0to1, heatmaps.arr_0to1)
 
     # --------
     # _augment_keypoints

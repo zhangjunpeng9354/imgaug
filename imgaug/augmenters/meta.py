@@ -811,7 +811,7 @@ class Augmenter(object):  # pylint: disable=locally-disabled, unused-variable, l
             The augmented heatmaps.
 
         """
-        raise NotImplementedError()
+        return heatmaps
 
     def _augment_heatmaps_as_images(self, heatmaps, parents, hooks):
         # TODO documentation
