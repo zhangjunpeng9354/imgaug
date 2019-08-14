@@ -1504,12 +1504,8 @@ def test_Augmenter():
     aug = DummyAugmenterCallsParent()
     keypoints = [ia.KeypointsOnImage([ia.Keypoint(x=1, y=0), ia.Keypoint(x=2, y=0),
                                       ia.Keypoint(x=2, y=1)], shape=(4, 4, 3))]
-    got_exception = False
-    try:
-        _ = aug.augment_keypoints(keypoints)
-    except NotImplementedError:
-        got_exception = True
-    assert got_exception
+    result = aug.augment_keypoints(keypoints)
+    assert np.allclose(result[0].to_xy_array(), keypoints[0].to_xy_array())
 
     # --------
     # augment_bounding_boxes
