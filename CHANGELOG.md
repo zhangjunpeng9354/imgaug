@@ -235,6 +235,9 @@
     * [rarely breaking] Changed `augmenters.contrast.adjust_contrast_log`
       and thereby `LogContrast` to no longer support dtypes `uint32`, `uint64`,
       `int32` and `int64`.
+* Removed image-channel check for cv2-based warp in `Affine`. Images with any
+  channel number can now be warped using the cv2 backend (previously: only
+  `<=4`, others would be warped via skimage).
 
 
 ## Improved Segmentation Map Augmentation #302
@@ -462,6 +465,9 @@ Changes:
 * Fixed `SimplexNoiseAlpha` and `FrequencyNoiseAlpha` not handling
   `sigmoid` argument correctly. #343
 * Fixed `SnowflakesLayer` crashing for grayscale images. #345
+* Fixed `Affine` heatmap augmentation crashing for arrays with more than
+  four channels and `order!=0`.
+* Fixed an outdated error message in `Affine`.
 
 
 # 0.2.9
