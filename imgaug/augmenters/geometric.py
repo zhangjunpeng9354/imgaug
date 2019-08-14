@@ -656,8 +656,7 @@ class Affine(meta.Augmenter):
                     cv2_bad_dtype = image.dtype.name not in self.VALID_DTYPES_CV2_ORDER_0
                 else:
                     cv2_bad_dtype = image.dtype.name not in self.VALID_DTYPES_CV2_ORDER_NOT_0
-                cv2_bad_shape = image.shape[2] > 4
-                cv2_impossible = cv2_bad_order or cv2_bad_dtype or cv2_bad_shape
+                cv2_impossible = cv2_bad_order or cv2_bad_dtype
                 if self.backend == "skimage" or (self.backend == "auto" and cv2_impossible):
                     # cval contains 3 values as cv2 can handle 3, but skimage only 1
                     cval = cval[0]
