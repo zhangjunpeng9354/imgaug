@@ -879,12 +879,6 @@ class AllChannelsCLAHE(meta.Augmenter):
             images[i] = image_warped
         return images
 
-    def _augment_heatmaps(self, heatmaps, random_state, parents, hooks):
-        return heatmaps
-
-    def _augment_keypoints(self, keypoints_on_images, random_state, parents, hooks):
-        return keypoints_on_images
-
     def get_parameters(self):
         return [self.clip_limit, self.tile_grid_size_px, self.tile_grid_size_px_min, self.per_channel]
 
@@ -1069,12 +1063,6 @@ class CLAHE(meta.Augmenter):
         return self.intensity_channel_based_applier.apply(images, random_state, parents + [self], hooks,
                                                           _augment_all_channels_clahe)
 
-    def _augment_heatmaps(self, heatmaps, random_state, parents, hooks):
-        return heatmaps
-
-    def _augment_keypoints(self, keypoints_on_images, random_state, parents, hooks):
-        return keypoints_on_images
-
     def get_parameters(self):
         return [self.all_channel_clahe.clip_limit,
                 self.all_channel_clahe.tile_grid_size_px,
@@ -1159,12 +1147,6 @@ class AllChannelsHistogramEqualization(meta.Augmenter):
 
             images[i] = image_warped
         return images
-
-    def _augment_heatmaps(self, heatmaps, random_state, parents, hooks):
-        return heatmaps
-
-    def _augment_keypoints(self, keypoints_on_images, random_state, parents, hooks):
-        return keypoints_on_images
 
     def get_parameters(self):
         return []
@@ -1293,12 +1275,6 @@ class HistogramEqualization(meta.Augmenter):
         return self.intensity_channel_based_applier.apply(images, random_state, parents + [self], hooks,
                                                           _augment_all_channels_histogram_equalization)
 
-    def _augment_heatmaps(self, heatmaps, random_state, parents, hooks):
-        return heatmaps
-
-    def _augment_keypoints(self, keypoints_on_images, random_state, parents, hooks):
-        return keypoints_on_images
-
     def get_parameters(self):
         return [self.intensity_channel_based_applier.change_colorspace.from_colorspace,  # from_colorspace is always str
                 self.intensity_channel_based_applier.change_colorspace.to_colorspace.value]
@@ -1344,12 +1320,6 @@ class _ContrastFuncWrapper(meta.Augmenter):
                 image_aug = self.func(*args)
             result[i] = image_aug
         return result
-
-    def _augment_heatmaps(self, heatmaps, random_state, parents, hooks):
-        return heatmaps
-
-    def _augment_keypoints(self, keypoints_on_images, random_state, parents, hooks):
-        return keypoints_on_images
 
     def get_parameters(self):
         return self.params1d
