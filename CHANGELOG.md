@@ -235,6 +235,10 @@
     * [rarely breaking] Changed `augmenters.contrast.adjust_contrast_log`
       and thereby `LogContrast` to no longer support dtypes `uint32`, `uint64`,
       `int32` and `int64`.
+* Removed the requirement to implement `_augment_keypoints()` and
+  `_augment_heatmaps()` in augmenters. The methods now default to doing
+  nothing. Also removed all such noop-implementations of these methods from
+  all augmenters.
 
 
 ## Improved Segmentation Map Augmentation #302
