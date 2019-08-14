@@ -462,6 +462,13 @@ Changes:
 * Fixed `SimplexNoiseAlpha` and `FrequencyNoiseAlpha` not handling
   `sigmoid` argument correctly. #343
 * Fixed `SnowflakesLayer` crashing for grayscale images. #345
+* Fixed `Polygon.clip_out_of_image()` crashing if the intersection between
+  polygon and image plane was an edge or point.
+* Fixed `Polygon.clip_out_of_image()` potentially failing for polygons
+  containing two or fewer points.
+* Fixed `Polygon.is_out_of_image()` returning wrong values if the image plane
+  was fully contained inside the polygon with no intersection between the
+  image plane and the polygon edge.
 
 
 # 0.2.9
