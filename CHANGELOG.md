@@ -235,6 +235,10 @@
     * [rarely breaking] Changed `augmenters.contrast.adjust_contrast_log`
       and thereby `LogContrast` to no longer support dtypes `uint32`, `uint64`,
       `int32` and `int64`.
+* Improved performance of `augmenters.flip.Fliplr`.
+* Improved performance of `augmenters.flip.Flipud`.
+* Added function `augmenters.flip.fliplr()`.
+* Added function `augmenters.flip.flipud()`.
 
 
 ## Improved Segmentation Map Augmentation #302
@@ -462,6 +466,9 @@ Changes:
 * Fixed `SimplexNoiseAlpha` and `FrequencyNoiseAlpha` not handling
   `sigmoid` argument correctly. #343
 * Fixed `SnowflakesLayer` crashing for grayscale images. #345
+* Fixed  `Fliplr` and `Flipud` using for coordinate-based inputs and image-like
+  inputs slightly different conditions for when to actually apply
+  augmentations.
 
 
 # 0.2.9
